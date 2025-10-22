@@ -1,0 +1,1 @@
+Desafio para a Hackathon RERUM de 2025 na UFJF
