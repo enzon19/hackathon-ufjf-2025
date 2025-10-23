@@ -1,6 +1,8 @@
 <script>
   import { enhance } from "$app/forms";
   import Input from "$lib/components/Input.svelte";
+  import Message from "$lib/components/Message.svelte";
+  import { Spinner } from "flowbite-svelte";
 
   let history = $state([]);
   let inputValue = $state("");
@@ -28,24 +30,44 @@
   }
 </script>
 
-{isLoading}
-{#if history.length > 0}
-  <div class="mt-4">
-    {#each history as item, i}
-      <div class="p-3 bg-white rounded-lg mb-2 shadow-sm">
-        <div class="text-xs text-gray-500 mb-1">
-          {item.from === "user" ? "Você" : "PecuaristaGPT"}
-        </div>
-        <div class="text-sm">{item.value}</div>
+<div class="h-full flex flex-col">
+  <div class="flex-1 overflow-y-auto mb-2">
+    {#if history.length > 0}
+      <div class="flex flex-col gap-1.5">
+        {#each history as item}
+          <Message value={item.value} from={item.from} sql={item.sql} />
+        {/each}
+        {#if isLoading}
+          <Spinner class="text-center mx-auto" size="8" />
+        {/if}
       </div>
-    {/each}
+    {:else}
+      <h2 class="text-center font-medium text-lg">Sugestões de Perguntas</h2>
+      {#snippet suggestion(name)}
+        <button
+          class="bg-neutral-200 rounded-xl p-4 cursor-pointer"
+          onclick={() => {
+            inputValue = name;
+            document.querySelector("#send").click();
+          }}
+        >
+          {name}
+        </button>
+      {/snippet}
+      <div class="grid grid-flow-col gap-2 max-w-md mx-auto">
+        {@render suggestion("Teste")}
+        {@render suggestion("Teste")}
+        {@render suggestion("Teste")}
+        {@render suggestion("Teste")}
+      </div>
+    {/if}
   </div>
-{/if}
 
-<form
-  method="POST"
-  use:enhance={handleSubmit}
-  class="bg-neutral-200 p-2 flex flex-row gap-2 shadow-md rounded-xl"
->
-  <Input bind:value={inputValue} {isLoading} />
-</form>
+  <form
+    method="POST"
+    use:enhance={handleSubmit}
+    class="bg-neutral-200 p-2 flex flex-row gap-2 shadow-md rounded-xl shrink-0"
+  >
+    <Input bind:value={inputValue} {isLoading} />
+  </form>
+</div>

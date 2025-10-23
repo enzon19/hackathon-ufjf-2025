@@ -10,12 +10,14 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<header class="bg-green-700 flex flex-row items-center justify-center p-2">
-  <a href="/">
-    <h1 class="text-white font-bold text-center text-xl">AgroChat</h1>
-  </a>
-</header>
+<div class="h-screen flex flex-col">
+  <header class="bg-green-700 flex flex-row items-center justify-center p-2">
+    <a href="/">
+      <h1 class="text-white font-bold text-center text-2xl">AgroChat</h1>
+    </a>
+  </header>
 
-<main class="p-2">
-	{@render children?.()}
-</main>
+  <main class="flex-1 overflow-hidden p-2">
+    {@render children?.()}
+  </main>
+</div>
