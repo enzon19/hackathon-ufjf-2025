@@ -1,29 +1,6 @@
 const configSQL = `Generate only a SQL query based on the prompt. If the user ask for any other information other than help to get data or doesn't make any logical question, you can refuse to answer it saying the magical word "null". Don't forget to put quotes in the column names. Just put useful information in the select based on the prompt. The structure of the database is: TABLE bovinos: id (uuid), codigo (varchar), nome(varchar), dataNascimento(date)`;
 const configAnswer = `Based on the initial prompt, answer the user in natural language based on the results of a SQL query provided after user's prompt. If you run out in any problem, answer being honest and direct, don't talk about technical stuff, like SQL, or databases, don't offer help to fix problems or suggestions like that.`;
 
-export async function generateSQLQuery(prompt) {
-  const body = {
-    prompt,
-    system: configSQL,
-  };
-
-  const response = await fetch("https://lucas485.app.n8n.cloud/webhook/ai", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-
-  if (response.status == 200) {
-    return await response.text();
-  } else {
-    console.error(response.text());
-    throw "Error generating SQL: " + response.text();
-  }
-}
-
-/*
 export async function generateSQLQueryWithMemory(history) {
   const body = {
     model: "openai",
