@@ -1,25 +1,26 @@
 <script>
+  import { marked } from "marked";
   import { slide } from "svelte/transition";
 
-  let { value, sql, from } = $props();
+  let { content, sql, role } = $props();
 
-  let openSQL = $state(false);
+  let isSQLInspectorOpen = $state(false);
 </script>
 
 <div
-  class="p-3 rounded-xl {from === 'agent' ? 'bg-green-100' : 'bg-neutral-200'}"
+  class="p-3 rounded-xl {role === 'system' ? 'bg-green-100' : 'bg-neutral-200'}"
 >
   <div class="flex flex-row justify-between items-center">
-    <div>
+    <div class="w-full flex-1">
       <div class="text-sm text-neutral-600">
-        {from === "agent" ? "Assistente" : "Você"}
+        {role === "system" ? "Assistente" : "Você"}
       </div>
-      <div>{value}</div>
+      <div class="prose w-max min-w-full">{@html marked(content)}</div>
     </div>
-    {#if from === "agent"}
+    {#if sql}
       <button
         class="text-green-600 cursor-pointer bg-green-700/20 rounded-full h-10 w-10 p-2"
-        onclick={() => (openSQL = openSQL ? false : true)}
+        onclick={() => (isSQLInspectorOpen = !isSQLInspectorOpen)}
       >
         <div>
           <svg
@@ -37,7 +38,9 @@
       >
     {/if}
   </div>
-  {#if openSQL}
-    <pre transition:slide class="p-2 mt-2 bg-neutral-700 w-full rounded-xl text-white">{sql}</pre>
+  {#if isSQLInspectorOpen}
+    <pre
+      transition:slide
+      class="p-2 mt-2 bg-neutral-700 w-full rounded-xl text-white">{sql}</pre>
   {/if}
 </div>
