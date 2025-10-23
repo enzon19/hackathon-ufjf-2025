@@ -12,17 +12,16 @@
     inputValue = "";
     isLoading = true;
 
-    const value = formData.get("question");
+    const prompt = formData.get("prompt");
 
     history.push({
-      from: "user",
-      value: value,
-      timestamp: new Date().toISOString(),
+      role: "user",
+      content: prompt,
     });
 
     return async ({ update, result }) => {
       await update();
-      if (result.type === "success" && result.data) {
+      if (result.data) {
         history.push(result.data.answer);
         isLoading = false;
       }
@@ -34,31 +33,38 @@
   <div class="flex-1 overflow-y-auto mb-2">
     {#if history.length > 0}
       <div class="flex flex-col gap-1.5">
-        {#each history as item}
-          <Message value={item.value} from={item.from} sql={item.sql} />
+        {#each history as { content, role, sql }}
+          <Message {content} {role} {sql} />
         {/each}
         {#if isLoading}
           <Spinner class="text-center mx-auto" size="8" />
         {/if}
       </div>
     {:else}
-      <h2 class="text-center font-medium text-lg">Sugestões de Perguntas</h2>
+      <h2 class="text-center font-medium text-lg mb-2">
+        Sugestões de Perguntas
+      </h2>
       {#snippet suggestion(name)}
         <button
           class="bg-neutral-200 rounded-xl p-4 cursor-pointer"
           onclick={() => {
-            document.querySelector("#question").value = name;
+            document.querySelector("#prompt").value = name;
             document.querySelector("#send").click();
           }}
         >
           {name}
         </button>
       {/snippet}
-      <div class="grid grid-flow-col gap-2 max-w-md mx-auto">
-        {@render suggestion("Teste")}
-        {@render suggestion("Teste2")}
-        {@render suggestion("Teste3")}
-        {@render suggestion("Teste4")}
+      <div class="grid grid-flow-col gap-2 max-w-[70%] mx-auto">
+        {@render suggestion(
+          'Forneça a genealogia até a terceira geração do animal "teste"'
+        )}
+        {@render suggestion(
+          "Identifique o touro que possui a maior média de lactação de suas filhas ao primeiro parto"
+        )}
+        {@render suggestion(
+          'Pode me fornecer as lactações encerradas, números de partos, da vaca "NANA" e a sua produção vitalícia?'
+        )}
       </div>
     {/if}
   </div>
@@ -69,5 +75,6 @@
     class="bg-neutral-200 p-2 flex flex-row gap-2 shadow-md rounded-xl shrink-0"
   >
     <Input bind:value={inputValue} {isLoading} />
+    <input type="hidden" name="history" value={JSON.stringify(history)} />
   </form>
 </div>
