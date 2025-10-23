@@ -2,11 +2,23 @@
   import { Button } from "flowbite-svelte";
   import { Input } from "flowbite-svelte";
 
-  let { isLoading } = $props();
+  let { value = $bindable(), isLoading } = $props();
 </script>
 
-<Input id="question" name="question" placeholder="Digite uma pergunta..." />
-<Button disabled={isLoading} size="sm" class="cursor-pointer" type="submit">
+<Input
+  id="question"
+  name="question"
+  bind:value
+  placeholder="Digite uma pergunta..."
+  disabled={isLoading}
+/>
+<Button
+  disabled={isLoading}
+  size="sm"
+  class="cursor-pointer"
+  id="send"
+  type="submit"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"
