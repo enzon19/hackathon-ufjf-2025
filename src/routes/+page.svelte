@@ -47,7 +47,7 @@
         <button
           class="bg-neutral-200 rounded-xl p-4 cursor-pointer"
           onclick={() => {
-            inputValue = name;
+            document.querySelector("#question").value = name;
             document.querySelector("#send").click();
           }}
         >
@@ -56,9 +56,9 @@
       {/snippet}
       <div class="grid grid-flow-col gap-2 max-w-md mx-auto">
         {@render suggestion("Teste")}
-        {@render suggestion("Teste")}
-        {@render suggestion("Teste")}
-        {@render suggestion("Teste")}
+        {@render suggestion("Teste2")}
+        {@render suggestion("Teste3")}
+        {@render suggestion("Teste4")}
       </div>
     {/if}
   </div>
