@@ -45,8 +45,7 @@ export const actions = {
         answer: answer,
       };
     } catch (e) {
-      answer.content = "Houve um erro ao executar seu pedido. Tente novamente.";
-      console.error(e);
+      answer.content = "Houve um erro ao executar seu pedido. Tente novamente. Erro: " + e;
       return {
         success: false,
         answer,
