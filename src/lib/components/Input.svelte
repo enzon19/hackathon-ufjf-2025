@@ -6,11 +6,12 @@
 </script>
 
 <Input
-  id="question"
-  name="question"
+  id="prompt"
+  name="prompt"
   bind:value
   placeholder="Digite uma pergunta..."
   disabled={isLoading}
+  required
 />
 <Button
   disabled={isLoading}
