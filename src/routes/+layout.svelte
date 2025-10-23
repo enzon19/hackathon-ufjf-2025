@@ -12,7 +12,7 @@
 
 <div class="h-screen flex flex-col">
   <header class="bg-green-700 flex flex-row items-center justify-center p-2">
-    <a href="/">
+    <a href="/" onclick={() => (window.location.href = "/")}>
       <h1 class="text-white font-bold text-center text-2xl">AgroChat</h1>
     </a>
   </header>
