@@ -66,6 +66,8 @@ export async function generateSQLQuery(prompt) {
   return result;
 }
 
+*/
+
 export async function generateFinalAnswer(prompt, data) {
   const url = new URL(
     `https://text.pollinations.ai/${encodeURIComponent(
@@ -81,4 +83,3 @@ export async function generateFinalAnswer(prompt, data) {
   const result = await response.text();
   return result;
 }
-*/
