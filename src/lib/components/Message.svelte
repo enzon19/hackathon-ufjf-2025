@@ -13,9 +13,9 @@
   <div class="flex flex-row justify-between items-center">
     <div class="w-full flex-1">
       <div class="text-sm text-neutral-600">
-        {role === "system" ? "Assistente" : "Você"}
+        {role === "system" ? "AgroChat" : "Você"}
       </div>
-      <div class="prose w-max min-w-full">{@html marked(content)}</div>
+      <div class="prose min-w-full break-normal">{@html marked(content)}</div>
     </div>
     {#if sql}
       <button

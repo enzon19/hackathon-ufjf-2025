@@ -29,8 +29,8 @@
   }
 </script>
 
-<div class="h-full flex flex-col">
-  <div class="flex-1 overflow-y-auto mb-2">
+<div class="h-full flex flex-col min-h-0">
+  <div class="flex-1 overflow-y-auto mb-4 min-h-0">
     {#if history.length > 0}
       <div class="flex flex-col gap-1.5">
         {#each history as { content, role, sql }}
@@ -42,7 +42,7 @@
       </div>
     {:else}
       <h2 class="text-center font-medium text-lg mb-2">
-        Sugestões de Perguntas
+        Sugestões
       </h2>
       {#snippet suggestion(name)}
         <button
@@ -55,7 +55,7 @@
           {name}
         </button>
       {/snippet}
-      <div class="grid grid-flow-col gap-2 max-w-[70%] mx-auto">
+      <div class="grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
         {@render suggestion(
           'Forneça a genealogia até a terceira geração do animal "teste"'
         )}
