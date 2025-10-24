@@ -41,6 +41,6 @@
   {#if isSQLInspectorOpen}
     <pre
       transition:slide
-      class="p-2 mt-2 bg-neutral-700 w-full rounded-xl text-white">{sql}</pre>
+      class="p-2 mt-2 bg-neutral-700 w-full rounded-xl text-white whitespace-pre-wrap wrap-break-words">{sql}</pre>
   {/if}
 </div>
