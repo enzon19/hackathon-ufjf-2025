@@ -57,13 +57,16 @@
       {/snippet}
       <div class="grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
         {@render suggestion(
-          'Forneça a genealogia até a terceira geração do animal "teste"'
+          'Forneça a genealogia até a terceira geração do animal "19081502"'
         )}
         {@render suggestion(
           "Identifique o touro que possui a maior média de lactação de suas filhas ao primeiro parto"
         )}
         {@render suggestion(
           'Pode me fornecer as lactações encerradas, números de partos, da vaca "Vaca100000" e a sua produção vitalícia?'
+        )}
+        {@render suggestion(
+          'qual o touro que possui seus descendentes com a maior media de produção?'
         )}
       </div>
     {/if}
