@@ -74,6 +74,12 @@
         {@render suggestion(
           'me diga o touro com mais filhos'
         )}
+        {@render suggestion(
+          'Qual foi a produção total de leite?'
+        )}
+        {@render suggestion(
+          'De onde vem esses animais?'
+        )}
       </div>
     {/if}
   </div>
