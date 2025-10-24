@@ -37,7 +37,7 @@ export const actions = {
         answer.sql = sqlQuery;
         answer.content = answerForHumans;
       } else {
-        answer.content = "Desculpe, mas não posso responder essa pergunta.";
+        answer.content = "Desculpe, mas não posso responder isso.";
       }
 
       return {
