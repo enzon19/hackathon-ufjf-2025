@@ -30,7 +30,7 @@
 </script>
 
 <div class="h-full flex flex-col min-h-0">
-  <div class="flex-1 overflow-y-auto mb-4 min-h-0">
+  <div class="flex-1 overflow-y-auto mb-2 min-h-0">
     {#if history.length > 0}
       <div class="flex flex-col gap-1.5">
         {#each history as { content, role, sql }}
@@ -63,7 +63,7 @@
           "Identifique o touro que possui a maior média de lactação de suas filhas ao primeiro parto"
         )}
         {@render suggestion(
-          'Pode me fornecer as lactações encerradas, números de partos, da vaca "NANA" e a sua produção vitalícia?'
+          'Pode me fornecer as lactações encerradas, números de partos, da vaca "Vaca100000" e a sua produção vitalícia?'
         )}
       </div>
     {/if}
