@@ -8,6 +8,7 @@
 <Input
   id="prompt"
   name="prompt"
+  autocomplete="off"
   bind:value
   placeholder="Digite uma pergunta..."
   disabled={isLoading}
