@@ -68,6 +68,12 @@
         {@render suggestion(
           'qual o touro que possui seus descendentes com a maior media de produção?'
         )}
+        {@render suggestion(
+          'quantas vacas e quantos touros estão cadastrados?'
+        )}
+        {@render suggestion(
+          'me diga o touro com mais filhos'
+        )}
       </div>
     {/if}
   </div>
