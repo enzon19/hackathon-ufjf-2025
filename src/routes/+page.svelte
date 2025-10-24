@@ -57,7 +57,7 @@
       {/snippet}
       <div class="grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
         {@render suggestion(
-          'Forneça a genealogia até a terceira geração do animal "19081502"'
+          'Forneça a genealogia até a terceira geração do animal "Touro19081502"'
         )}
         {@render suggestion(
           "Identifique o touro que possui a maior média de lactação de suas filhas ao primeiro parto"
